@@ -1,0 +1,49 @@
+ReportDefinitions:
+- reportName: DescriptionReport
+  decryptionPathId: DescriptionReport
+  summary: Fetches the Ticket details
+  version: 1.0.0
+  moduleName: Incident
+  sourceColumns:
+  - name: incidentid
+    label: Ticket No.
+    type: string
+    source: eg_incident_v2
+    total: false
+  - name: incidenttype
+    label: Ticket Type
+    type: string
+    source: eg_incident_v2
+    total: false
+  - name: incidentsubtype
+    label: Ticket Sub Type
+    type: string
+    source: eg_incident_v2
+    total: false
+  - name: applicationstatus
+    label: Status
+    type: string
+    source: eg_incident_v2
+    total: false
+  searchParams:
+   - name: name
+    label: Ticket Sub Type
+    type: singlevaluelist
+    source: eg_incident_v2
+    pattern: http://egov-mdms-service:8080/egov-mdms-service/v1/_get?tenantId=$tenantid&moduleName=Incident&masterName=ServiceDefs|$.MdmsRes.Incident.ServiceDefs[*].code|$.MdmsRes.incident.ServiceDefs[*].name
+    isMandatory: false
+    searchClause: AND im.incidentsubtype = $name
+  - name: fromDate
+    label: From Date
+    type: epoch
+    source: eg_incident_v2
+    isMandatory: true
+    searchClause: AND im.createdtime >= $fromDate
+  - name: toDate
+    label: To Date
+    type: epoch
+    source: eg_incident_v2
+    isMandatory: true
+    searchClause: AND im.createdtime <= $toDate
+  query: |
+        select im.incidentid,im.incidenttype,im.incidentsubtype,im.tenantid,im.applicationstatus, im.district,im.block from eg_incident_v2 im where 1=1

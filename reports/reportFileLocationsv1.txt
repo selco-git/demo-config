@@ -1,0 +1,1 @@
+rainmaker-im=file:///work-dir/configs/reports/config/rainmaker-im-reports.yml
