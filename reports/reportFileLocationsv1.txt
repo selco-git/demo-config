@@ -1,1 +1,1 @@
-rainmaker-im=file:///work-dir/configs/reports/config/rainmaker-im-reports.yml
+rainmaker-im=file:///work-dir/configs/reports/config/pgr.yml
