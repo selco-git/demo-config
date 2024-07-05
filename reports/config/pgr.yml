@@ -27,7 +27,7 @@ ReportDefinitions:
     source: eg_incident_v2
     total: false
   searchParams:
-   - name: name
+  - name: name
     label: Ticket Sub Type
     type: singlevaluelist
     source: eg_incident_v2
