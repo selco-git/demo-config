@@ -408,24 +408,16 @@
                   "headers": []
                 },
                 {
-                  "id": "slaAchieved",
-                  "name": "DSS_SLA_ACHIEVED",
+                  "id": "openComplaints",
+                  "name": "DSS_PGR_OPEN_COMPLAINTS",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
                   "headers": []
                 },
                 {
-                  "id": "completionRate",
-                  "name": "DSS_PGR_COMPLETION_RATE",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-				{
-                  "id": "pgrAverageResolutionTime",
-                  "name": "NATIONAL_DSS_PGR_AVERAGE_RESOLUTION_TIME",
+                  "id": "closedComplaintsOverseas",
+                  "name": "DSS_PGR_CLOSED_COMPLAINTS_OVERSEAS",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -504,55 +496,8 @@
             }
           ]
         },
-        {
-          "row": 3,
-          "name": "DSS_SERVICE",
-          "vizArray": [
-            {
-              "id": 421,
-              "name": "DSS_PGR_COMPLAINTS_BY_STATUS",
-              "dimensions": {
-                "height": 250,
-                "width": 7
-              },
-              "vizType": "chart",
-              "isCollapsible": false,
-              "label": "",
-              "charts": [
-                {
-                  "id": "complaintsByStatus",
-                  "name": "DSS_PGR_COMPLAINTS_BY_STATUS",
-                  "code": "",
-                  "chartType": "donut",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
-              "id": 423,
-              "name": "DSS_PGR_COMPLAINTS_BY_DEPARTMENT",
-              "dimensions": {
-                "height": 250,
-                "width": 7
-              },
-              "vizType": "chart",
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "complaintsByDepartment",
-                  "name": "DSS_PGR_COMPLAINTS_BY_DEPARTMENT",
-                  "code": "",
-                  "chartType": "donut",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
 {
-  "row": 4,
+  "row": 3,
   "name": "DSS_SERVICE",
   "vizArray": [
     {
@@ -576,21 +521,20 @@
       ]
     },
     {
-      "id": 412,
-      "name": "DSS_EVENT_DURATION_GRAPH",
+      "id": 423,
+      "name": "DSS_PGR_COMPLAINTS_BY_COUNTRIES",
       "dimensions": {
-        "height": 350,
+        "height": 250,
         "width": 7
       },
       "vizType": "chart",
       "isCollapsible": false,
-      "label": "",
       "charts": [
         {
-          "id": "eventDurationGraph",
-          "name": "Monthly",
+          "id": "complaintsByCountries",
+          "name": "DSS_PGR_COMPLAINTS_BY_COUNTRIES",
           "code": "",
-          "chartType": "line",
+          "chartType": "bar",
           "filter": "",
           "headers": []
         }
@@ -600,7 +544,7 @@
 },
 
         {
-          "row": 5,
+          "row": 4,
           "name": "DSS_SERVICE",
           "vizArray": [
             {
@@ -647,38 +591,47 @@
           ]
         },
         {
-          "row": 6,
+          "row": 5,
           "name": "DSS_SERVICE",
           "vizArray": [
             {
-              "id": 431,
-              "name": "DSS_PGR_STATUS_BY_TENANT",
+              "id": 421,
+              "name": "DSS_PGR_CITIZENS",
               "dimensions": {
-                "height": 350,
-                "width": 12
+                "height": 250,
+                "width": 4
               },
               "vizType": "chart",
+              "isCollapsible": false,
               "label": "",
-              "noUnit": false,
-              "isCollapsible": true,
               "charts": [
                 {
-                  "id": "xpgrStatusByDDR",
-                  "name": "DSS_PGR_STATUS_BY_TENANT",
+                  "id": "pgrCitizenOnDateRange",
+                  "name": "DSS_PGR_CITIZENS",
                   "code": "",
-                  "chartType": "table",
+                  "chartType": "line",
                   "filter": "",
-                  "headers": [],
-                  "tabName": "Boundary"
-                },
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 424,
+              "name": "DSS_PGR_TOP_COMPLAINTS",
+              "dimensions": {
+                "height": 250,
+                "width": 4
+              },
+              "vizType": "chart",
+              "isCollapsible": false,
+              "charts": [
                 {
-                  "id": "xpgrStatusByDept",
-                  "name": "DSS_PGR_STATUS_BY_DEPARTMENT",
+                  "id": "topFiveComplaints",
+                  "name": "DSS_PGR_TOP_COMPLAINTS",
                   "code": "",
-                  "chartType": "table",
+                  "chartType": "horizontalBar",
                   "filter": "",
-                  "headers": [],
-                  "tabName": "Department"
+                  "headers": []
                 }
               ]
             }

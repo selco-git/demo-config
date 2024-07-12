@@ -3154,6 +3154,66 @@
     },
     "_comment": " Total Number of Closed Complaints "
   },
+  "closedComplaintsOverseas": {
+    "chartName": "DSS_PGR_CLOSED_COMPLAINTS_OVERSEAS",
+    "queries": [
+      {
+        "module": "PGR",
+        "requestQueryMap": "{\"wardId\" : \"Data.ward.name.keyword\", \"tenantId\" : \"Data.service.tenantId\"}",
+        "dateRefField": "Data.@timestamp",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must_not\":[{\"terms\":{\"Data.service.tenantId.keyword\":[\"pg.testing\",\"pg.citya\"]}}]}},\"aggs\":{\"Closed Complaints\":{\"filters\":{\"filters\":{\"CLOSEDAFTERRESOLUTION\":{\"match\":{\"Data.service.applicationStatus.keyword\":\"CLOSEDAFTERRESOLUTION\"}},\"RESOLVED\":{\"match\":{\"Data.service.applicationStatus.keyword\":\"RESOLVED\"}},\"REJECTED\":{\"match\":{\"Data.service.applicationStatus.keyword\":\"REJECTED\"}}}}}}}}}"
+      }
+    ],
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Closed Complaints"
+    ],
+    "insight": {
+      "chartResponseMap": "closedComplaintsOverseas",
+      "action": "differenceOfNumbers",
+      "upwardIndicator": "positive",
+      "downwardIndicator": "negative",
+      "textMessage": "$indicator$value% than last $insightInterval",
+      "colorCode": "#228B22",
+      "insightInterval": "year"
+    },
+    "_comment": " Total Number of Closed Complaints Overseas"
+  },
+  "openComplaints": {
+    "chartName": "DSS_PGR_OPEN_COMPLAINTS",
+    "queries": [
+      {
+        "module": "PGR",
+        "requestQueryMap": "{\"wardId\" : \"Data.ward.name.keyword\", \"tenantId\" : \"Data.service.tenantId\"}",
+        "dateRefField": "Data.@timestamp",
+        "indexName": "pgr-services",
+        "aggrQuery": "\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must_not\":[{\"term\":{\"Data.service.tenantId.keyword\":\"pg.testing\"}},{\"terms\":{\"Data.service.applicationStatus.keyword\":[\"CLOSEDAFTERRESOLUTION\",\"RESOLVED\",\"REJECTED\",\"INITIATED\"]}}]}},\"aggs\":{\"Open Complaints\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}}}}}"
+      }
+    ],
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Open Complaints"
+    ],
+    "insight": {
+      "chartResponseMap": "closedComplaints",
+      "action": "differenceOfNumbers",
+      "upwardIndicator": "positive",
+      "downwardIndicator": "negative",
+      "textMessage": "$indicator$value% than last $insightInterval",
+      "colorCode": "#228B22",
+      "insightInterval": "year"
+    },
+    "_comment": " Total Number of Closed Complaints "
+  },
   "cumulativeClosedComplaints": {
     "chartName": "DSS_TOTAL_CUMULATIVE_CLOSED_COMPLAINTS",
     "queries": [
@@ -3363,6 +3423,28 @@
     ],
     "insight": {},
     "_comment": " Complaints by Department"
+  },
+  "complaintsByCountries": {
+    "chartName": "DSS_PGR_COMPLAINTS_BY_COUNTRIES",
+    "queries": [
+      {
+        "module": "PGR",
+        "requestQueryMap": "{\"wardId\" : \"Data.ward.name.keyword\", \"tenantId\" : \"Data.service.tenantId\"}",
+        "dateRefField": "Data.@timestamp",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must_not\":[{\"term\":{\"Data.service.tenantId.keyword\":\"pg.testing\"}}]}},\"aggs\":{\"Complaints By Countries\":{\"terms\":{\"field\":\"Data.tenantData.city.code.keyword\"},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.@timestamp\"}}}}}}}}"
+      }
+    ],
+    "chartType": "bar",
+    "valueType": "number",
+    "action": "",
+    "documentType": "_doc",
+    "drillChart": "none",
+    "aggregationPaths": [
+      "Complaints By Countries"
+    ],
+    "insight": {},
+    "_comment": " Complaints by Countries"
   },
   "pgrStatusByDDR": {
     "chartName": "DSS_PGR_STATUS_BY_DDR",
